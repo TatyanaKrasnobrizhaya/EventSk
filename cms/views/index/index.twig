@@ -1,0 +1,83 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+
+    <style>
+        .btn-udalosti {
+            background-color: #fd7e14;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid mx-auto flex-column text-center">
+                <a class="navbar-brand display-6" href="/"
+                   style="font-size: 42px; font-weight: bold; margin-top: 30px;">Najlepšie udalosti na Slovensku</a>
+                <p class="mx-auto" style="font-size: 14px; max-width: 600px; margin-top: 20px;">
+                    Prišiel rok 2024! A my sme vás, samozrejme, nemohli nechať bez nášho tradičného výberu
+                    najzaujímavejších podujatí a aktivít. Ponorme sa spoločne do sveta kreativity, zábavy a kultúrneho
+                    obohatenia, aby bol každý januárový deň naozaj výnimočný a nezabudnuteľný!
+                </p>
+
+                <div class="row" style="margin-bottom: 2rem;">
+                    <div class="col-md-4">
+                        <div id="gaudeamusDetails" class="card mb-3" style="max-width: 20rem;">
+                            <div class="card-body">
+                                <h2>Gaudeamus</h2>
+                                <h3 style="font-size: 20px; font-weight: normal;">Veľtrh</h3>
+                                <img src="/images/Gaedamus.jpg" alt="Gaudeamus" class="img-fluid mb-3">
+                                <p> Platforma na výmenu komplexných informácií o možnostiach pomaturitného a
+                                    celoživotného vzdelávania v Českej republike, na Slovensku a v zahraničí.</p>
+                                <p style="font-size: 12px;">23.Januara</p>
+                                <p style="font-size: 12px;">Nitra</p>
+                                <a href='http://localhost:3000/form' class="btn btn-udalosti">Zobraziť</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="card mb-3" style="max-width: 20rem;">
+                            <div class="card-body">
+                                <h2>Interbeauty</h2>
+                                <h3 style="font-size: 20px; font-weight: normal;"> Výstava</h3>
+                                <img src="/images/Unterbeauty.png" alt="Interbeauty" class="img-fluid mb-3">
+                                <p>Krása, zdravie a pohoda. Medzinárodný veľtrh kozmetiky Interbeauty je zárukou
+                                    najnovších trendov a stálic v oblasti starostlivosti o pleť, telo, vlasy a
+                                    nechty.</p>
+                                <p style="font-size: 12px;">26.Januara</p>
+                                <p style="font-size: 12px;">Bratislava</p>
+                                <a href='http://localhost:3000/form' class="btn btn-udalosti">Zobraziť</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="card mb-3" style="max-width: 20rem;">
+                            <div class="card-body">
+                                <h2>Pohoda Festival</h2>
+                                <h3 style="font-size: 20px; font-weight: normal;">Festival</h3>
+                                <img src="/images/Pohoda.png" alt="Pohoda" class="img-fluid mb-3">
+                                <p>Pódiá s rôznymi živými vystúpeniami, jedlom, umením, kempovaním a párty. Vytvorili
+                                    sme jedinečné zjednocujúce hudobné a kultúrne podujatie. pripojte sa k nám!</p>
+                                <p style="font-size: 12px;">13.Júna.</p>
+                                <p style="font-size: 12px;">Trenčín</p>
+                                <a href='http://localhost:3000/form' class="btn btn-udalosti">Zobraziť</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <script>
+        function redirectToForm() {
+            window.location.href = 'http://localhost:3000/form';
+        }
+    </script>
+
+
+{% endblock %}

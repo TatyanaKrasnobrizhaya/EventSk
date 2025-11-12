@@ -1,0 +1,22 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <div class="row d-flex h-100 justify-content-center p-0">
+        <div style="width: 85%" class="p-0 col-4">
+            <form action="/user/passwd" method="post" class="row h-100 justify-content-center align-items-center">
+                <div class="card p-0">
+                    <div class="card-header">Zadajte nové heslo</div>
+                    <div class="card-body">
+                        <label>Nové heslo</label>
+                        <input class="form-control mb-3" type="password" name="password1"
+                               placeholder="Zadajte nové heslo.">
+                        <label>Zopakovať heslo</label>
+                        <input class="form-control" type="password" name="password2"
+                               placeholder="Zopakujte nové heslo.">
+                        <input class="btn btn-success mt-4 float-end" type="submit" value="Zmeniť heslo">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

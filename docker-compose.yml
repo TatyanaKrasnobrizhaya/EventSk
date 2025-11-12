@@ -1,0 +1,91 @@
+version: "3.7"
+services:
+
+  dev_cms:
+    image: node:21-alpine
+    container_name: dev_cms
+    restart: always
+    working_dir: /opt/app
+    volumes: 
+        #- /opt/app/node_modules
+        - ./cms:/opt/app
+    entrypoint: [ "/bin/sh", "-c" ,"mkdir -p logs && npm install 2>&1 | tee -a logs/debug.log && npm run devserver 2>&1 | tee -a logs/debug.log"]
+    environment:
+      COOKIE_PWD: ${COOKIE_PWD}
+      PWD_SALT: ${PWD_SALT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      - db
+    links:
+      - db
+    ports: 
+      - "3000:3000"
+        
+  db:
+    image: mysql:8.0-debian
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./dbdata:/var/lib/mysql
+      # - ./sql:/sql
+
+    
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      # PMA_ARBITRARY: 1
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASS}
+    restart: always
+    ports:
+      - 8000:80
+        
+
+
+  
+  dev_cms_password:
+    profiles: ["password"]
+    image: node:21-alpine
+    container_name: dev_cms_password
+    restart: always
+    working_dir: /opt/app
+    volumes: 
+        - /opt/app/node_modules
+        - ./cms:/opt/app
+    entrypoint: [ "/bin/sh", "-c" ,"mkdir -p logs && npm install 2>&1 | tee -a logs/debug.log && node cli/set_password.js $MENO_HESLO 2>&1 | tee -a logs/debug.log"]
+    environment:
+      COOKIE_PWD: ${COOKIE_PWD}
+      PWD_SALT: ${PWD_SALT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      - db
+    links:
+      - db
+
+
+        
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.238.0/24"

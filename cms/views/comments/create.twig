@@ -1,0 +1,28 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+
+
+    <div class="container mt-5 h-100 d-flex align-items-center">
+
+
+        <form action="/post/comments/create/{{ postId }}" method="post" class="w-100">
+            <div class="card mt-2 h-full">
+                <div class="card-body">
+                    <input type="hidden" name="username" value="{{ user.username }}">
+                    <label for="commentText" class="form-label">Add Comment</label>
+                    <textarea name="commentText" class="form-control" id="commentText">{{ post.popis }}</textarea>
+
+
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-success float-end" value="Отправить">
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+{% endblock %}

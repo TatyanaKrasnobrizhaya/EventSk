@@ -1,0 +1,64 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    {% if user %}
+        <form enctype="multipart/form-data" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><h2 class="text-center">Upraviť príspevok</h2>
+                    </div>
+                </div>
+                <div class="card-body container">
+                    <input type="hidden" name="postId" value="{{ post.id }}">
+
+                    <label for="nazov" class="form-label">Nazov</label>
+                    <input type="text" class="form-control mb-3" id="nazov" name="nazov" value="{{ post.nazov }}">
+
+                    <label for="udalosti" class="form-label">Udalosti</label>
+                    <select name="typ" id="typ" class="form-select mb-3">
+                        <option value="Veľtrh" {% if post.typ == "Veľtrh" %} selected {% endif %}>Veľtrh</option>
+                        <option value="Výstava" {% if post.event_type == "Výstava" %} selected {% endif %}>Výstava
+                        </option>
+                        <option value="Festival" {% if post.event_type == "Festival" %} selected {% endif %}>Festival
+                        </option>
+                    </select>
+
+                    <label for="region" class="form-label">Region</label>
+                    <select class="form-select mb-3" name="region" id="region">
+                        <option value="Bratislavský kraj" {% if post.region == "Bratislavský kraj" %} selected {% endif %}>
+                            Bratislavský kraj
+                        </option>
+                        <option value="Nitriansky kraj" {% if post.region == "Nitriansky kraj" %} selected {% endif %}>
+                            Nitriansky kraj
+                        </option>
+                        <option value="Trnavský kraj" {% if post.region == "Trnavský kraj" %} selected {% endif %}>
+                            Trnavský kraj
+                        </option>
+                    </select>
+
+                    <label for="mesto" class="form-label">Mesto</label>
+                    <input type="text" class="form-control mb-3" id="mesto" name="mesto" value="{{ post.mesto }}">
+
+                    <label for="date" class="form-label">Dátum</label>
+
+                    <input class="form-control" type="date" name="date" id="date"
+                           value="{{ post.date|date('DD.MM.YYYY') }}">
+                    <p>Pôvodný dátum koncertu: {{ post.date|date('DD.MM.YYYY') }}</p>
+
+                    <label for="popis" class="form-label">Popis</label>
+                    <textarea name="popis" class="form-control mb-3" id="popis">{{ post.popis }}</textarea>
+
+
+                    <label for="file-obrazok" class="form-label">Obrázok</label>
+                    <input class="form-control" type="file" id="file-obrazok" name="obrazok">
+                    <p>Pôvodný obrázok: {{ post.image_path }}</p>
+
+                    <div class="text-end">
+                        <input type="submit" class="btn btn-primary" value="Zmeniť">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    {% endif %}
+{% endblock %}

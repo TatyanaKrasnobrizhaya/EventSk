@@ -1,0 +1,8 @@
+
+dbdata
+cms/sessions/*
+cms/public/images/post/*.jpg
+.env
+.idea
+logs/debug.log
+sql/wete2.sql

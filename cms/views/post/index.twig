@@ -1,0 +1,74 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" action="/post/create">
+        <div class="card ">
+            <div class="card-header">
+                <div class="card-title"><h2 class="text-center">Pridať udalost</h2>
+                </div>
+            </div>
+            <div class="card-body container">
+                <form action="/post/create" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nazov</label>
+                        <input class="form-control" type="text" name="name" id="id" placeholder="{{ post.nazov }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Udalosti </label>
+                        <select class="form-select" name="udalosti" id="id">
+                            <option value="Veľtrh" {% if post.typ == "Veľtrh" %} selected {% endif %}>Veľtrh</option>
+                            <option value="Výstava" {% if post.event_type == "Výstava" %} selected {% endif %}>Výstava
+                            </option>
+                            <option value="Festival" {% if post.event_type == "Festival" %} selected {% endif %}>
+                                Festival
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="region" class="form-label">Region</label>
+                        <select class="form-select" name="region" id="region">
+                            <option value="Bratislavský kraj" {% if post.region == "Bratislavský kraj" %} selected {% endif %}>
+                                Bratislavský kraj
+                            </option>
+                            <option value="Nitriansky kraj" {% if post.region == "Nitriansky kraj" %} selected {% endif %}>
+                                Nitriansky kraj
+                            </option>
+                            <option value="Trnavský kraj" {% if post.region == "Trnavský kraj" %} selected {% endif %}>
+                                Trnavský kraj
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mesto" class="form-label">Mesto</label>
+                        <input class="form-control" type="text" name="mesto" id="mesto" placeholder="{{ post.mesto }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="datum" class="form-label">Dátum</label>
+                        <input class="form-control" type="date" name="datum" id="datum" placeholder="{{ post.date }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="popis" class="form-label">Popis</label>
+                        <textarea class="form-control" name="popis" id="id">{{ post.popis }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Fotografia" class="form-label">Obrázok</label>
+                        <input class="form-control" type="file" name="file" id="Fotografia">
+                    </div>
+
+                    <div class="text-end">
+                        <button class="btn btn-primary" type="submit">Odoslať</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        </div>
+    </form>
+{% endblock %}
+

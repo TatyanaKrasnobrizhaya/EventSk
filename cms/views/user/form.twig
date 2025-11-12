@@ -1,0 +1,22 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <div class="row d-flex h-100 justify-content-center p-0">
+        <div style="width: 85%" class="p-0 col-4">
+            <form action="/user/check" method="post" class="row h-100 justify-content-center align-items-center">
+                <div class="card">
+                    <div class="card-header">Prihláste sa, prosím</div>
+                    <div class="card-body">
+                        <label>Prihlasovacie meno</label>
+                        <input class="form-control mb-3" type="text" name="username"
+                               placeholder="Zadajte Vaše prihlasovacie meno.">
+                        <label>Heslo</label>
+                        <input class="form-control" type="password" name="password"
+                               placeholder="Zadajte Vaše prihlasovacie heslo.">
+                        <input class="btn btn-success mt-4 float-end" type="submit" value="Prihlásiť sa">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

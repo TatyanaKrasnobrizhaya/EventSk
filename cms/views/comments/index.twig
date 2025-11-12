@@ -1,0 +1,24 @@
+{% extends '../base.twig' %}
+
+
+{% block content %}
+    <div class="card card-header">
+        <div class="card-title"><h2 class="text-center">Komentáre</h2>
+        </div>
+    </div>
+    <div class="container mt-5">
+        {% if comments.length > 0 %}
+            {% for comment in comments %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Autor: {{ comment.username }}</h5>
+                        <p class="card-text">Komentár: {{ comment.comment_text }}</p>
+                        <p class="card-text">Dátum: {{ comment.created_at|date('yy.MM.DD') }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
